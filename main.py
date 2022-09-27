@@ -1,4 +1,4 @@
 import cfets.lpr
 
-
-print(cfets.get_lpr_5y())
+s = cfets.get_lpr_5y(start_date='2022-01-01')
+print(s)
