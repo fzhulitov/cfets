@@ -1,25 +1,31 @@
+from io import StringIO
+
 import pandas as pd
 from cfets import request_data
 
-def lpr_1y ()->pd.Series:
-    df = request_data.get_data_frame()
-    s1 = pd.Series(dtype="float")
-    for row in df.itertuples():
-        value = row.Y1
-        date = pd.to_datetime(row.date)
-        s1[date] = value
-    s1.index = s1.index.to_period("M")
-    return s1
 
-def lpr_5y ()->pd.Series:
-    df = request_data.get_data_frame()
-    s5 = pd.Series(dtype="float")
-    for row in df.itertuples():
-        value = row.Y5
-        date = pd.to_datetime(row.date)
-        s5[date] = value
-    s5.index = s5.index.to_period("M")
-    s5 = s5.dropna()
-    return s5
+def get_lpr_1y() -> pd.Series:
+    df = prepare_data()
+    return df.loc[:, 'lpr1y'].dropna()
+
+
+def get_lpr_5y() -> pd.Series:
+    df = prepare_data()
+    return df.loc[:, 'lpr5y'].dropna()
+
+
+def prepare_data() -> pd.DataFrame:
+    d = request_data.get_data_frame()
+    df = pd.read_csv(StringIO(d),
+                     usecols=[0, 6, 7],
+                     names=['date', 'lpr1y', 'lpr5y'],
+                     dtype={'lpr1y': float, 'lpr5y': float},
+                     parse_dates=[0])
+    df.set_index('date', inplace=True)
+    df.index = df.index.to_period(freq='M')
+    return df
+
+
+
 
 
