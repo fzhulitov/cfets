@@ -4,13 +4,13 @@
 
 # cfets: Python interface for China Foreign Exchange Trade System (CFETS) API
 
-data code (series) for LPR API request:  
-`LprChrtCSV`
+Known CFETS data code (series) for API request:  
 
-Functions to get Loan Prime Rate time series:
+- LprChrtCSV - Lone Prime Rates (LPR)
+- RmbIdxHis - RMB Index
+- ShiborPriHis - SHIBOR history
+
+### Functions in _cfets_ package
+Loan Prime Rate time series:
  - get_lpr_1y() - one-year loan prime rate (LPR)
  - get_lpr_5y() - five-years loan prime rate (LPR)
-
-
-
-
