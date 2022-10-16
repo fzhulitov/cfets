@@ -24,8 +24,3 @@ def prepare_data() -> pd.DataFrame:
     df.set_index('date', inplace=True)
     df.index = df.index.to_period(freq='M')
     return df
-
-
-
-
-

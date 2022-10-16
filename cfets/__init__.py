@@ -6,4 +6,4 @@ from cfets.lpr import (
 
 from cfets.request_data import get_data_frame
 
-# __version__ = version("nbsc")
+# __version__ = version("cfets")
