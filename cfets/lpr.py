@@ -23,4 +23,4 @@ def prepare_data() -> pd.DataFrame:
                      parse_dates=[0])
     df.set_index('date', inplace=True)
     df.index = df.index.to_period(freq='M')
-    return df
+    return df/100
