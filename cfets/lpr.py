@@ -33,4 +33,4 @@ def prepare_data(d: dict) -> pd.DataFrame:
     df.set_index("date", inplace=True)
     df.index = df.index.to_period(freq="M")
     df.sort_index(ascending=False, inplace=True)
-    return df
+    return df/100
