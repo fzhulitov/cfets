@@ -39,6 +39,6 @@ def prepare_data(d: dict) -> pd.DataFrame:
         parse_dates=[0],
     )
     df.set_index("date", inplace=True)
-    df.index = df.index.to_period(freq="M")
+    df.index = df.index.to_period(freq="D")
     df.sort_index(ascending=False, inplace=True)
     return df/100
