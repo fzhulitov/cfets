@@ -8,6 +8,8 @@ sd = pd.Timestamp(2013, 10, 1)
 
 def get_lpr_1y(start_date: pd.Timestamp = sd,
                end_date: pd.Timestamp = None) -> pd.Series:
+    if end_date != None:
+        end_date = end_date.strftime("%Y-%m-%d")
     d = request_data.get_data_frame(code=lpr_code,
                 start_date=start_date.strftime("%Y-%m-%d"),
                 end_date=end_date
@@ -18,6 +20,8 @@ def get_lpr_1y(start_date: pd.Timestamp = sd,
 
 def get_lpr_5y(start_date: pd.Timestamp = sd,
                end_date: pd.Timestamp = None) -> pd.Series:
+    if end_date != None:
+        end_date = end_date.strftime("%Y-%m-%d")
     d = request_data.get_data_frame(
         code=lpr_code, start_date=start_date.strftime("%Y-%m-%d"),
         end_date=end_date
